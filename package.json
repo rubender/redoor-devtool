@@ -1,13 +1,14 @@
 {
-  "name": "redoor-debug",
-  "version": "1.0.3",
-  "description": "redoor debugger",
+  "name": "redoor-devtool",
+  "version": "1.0.0",
+  "description": "redoor devtool",
   "author": "Ruslan Matshin",
   "license": "MIT",
-  "repository": "git@github.com:rubender/rprovider-debugger.git",
+  "home":"https://github.com/rubender/redoor-devtool.git",
+  "repository": "https://github.com/rubender/redoor-devtool.git",
   "main": "dist/main.js",
   "bin": {
-    "rprovider-debugger": "cli/rprovider-rebugger.js"
+    "redoor-devtool": "cli/redoor-devtool.js"
   },
   "include": [
     "app/**/*"
