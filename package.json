@@ -1,0 +1,40 @@
+{
+  "name": "redoor-debug",
+  "version": "1.0.3",
+  "description": "redoor debugger",
+  "author": "Ruslan Matshin",
+  "license": "MIT",
+  "repository": "git@github.com:rubender/rprovider-debugger.git",
+  "main": "dist/main.js",
+  "bin": {
+    "rprovider-debugger": "cli/rprovider-rebugger.js"
+  },
+  "include": [
+    "app/**/*"
+  ],
+  "scripts": {
+    "dev_app": "parcel src/app/index.html --port 8777",
+    "dev_server": "backpack",
+    "build": "parcel build ./src/app/index.html  --no-source-maps --out-dir ./app && backpack build"
+  },
+  "dependencies": {
+    "chrome-launcher": "^0.13.2",
+    "express": "^4.16.4",
+    "http": "^0.0.0",
+    "https": "^1.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-inspector": "^2.3.1",
+    "ws": "^6.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-regenerator": "^7.4.3",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "autoprefixer": "^9.4.8",
+    "backpack-core": "^0.8.3",
+    "cssnano": "^4.1.10",
+    "postcss-modules": "^1.4.1"
+  }
+}

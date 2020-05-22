@@ -1,0 +1,9 @@
+{
+  "name": "provider",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./provider.js",
+  "devDependencies": {
+    "@babel/core": "^7.4.5"
+  }
+}

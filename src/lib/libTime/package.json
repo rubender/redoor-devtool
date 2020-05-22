@@ -1,0 +1,9 @@
+{
+  "name": "libTime",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./libTime.js",
+  "devDependencies": {
+    "@babel/core": "^7.4.5"
+  }
+}
