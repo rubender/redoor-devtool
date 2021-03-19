@@ -33,8 +33,8 @@ export const initState = prop => {
 export const action_SoketConnection = async ({ args: user }) => {
   __socket && __socket.close();
 
-  let host = __debuger && __debuger.HOST || 'localhost';
-  let port = __debuger && __debuger.PORT || 8333;
+  let host = window.__debuger && __debuger.HOST || 'localhost';
+  let port = window.__debuger && __debuger.PORT || 8333;
 
   __socket = new WebSocket(`ws://${host}:${port}?dbg=dbg`);
   __socket.onerror = error => onConnectionError(error);

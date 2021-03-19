@@ -1,10 +1,11 @@
-import React from 'react';
-import { ObjectInspector, ObjectRootLabel, ObjectLabel} from 'react-inspector';
+import { h, Component } from 'preact';
+//import React from 'react';
+//import { ObjectInspector, ObjectRootLabel, ObjectLabel} from 'react-inspector';
 
-
-import s from './debugger.css';
+import s from './debugger.module.css';
 
 import ActionItem from './comp/ActionItem'
+import ObjectInspector from './comp/ObjectInspector'
 
 import { Connect } from './store';
 
@@ -85,7 +86,7 @@ const _filterActions = (str,obj) => {
 }
 
 
-class Debugger extends React.Component {
+class Debugger extends Component {
   body = null;
   constructor(props) {
     super(props);
@@ -201,18 +202,20 @@ class Debugger extends React.Component {
       <div className={s.inp}>
         <input type="text"
                 value={state_filter_val}
-                onChange={e=>cxRun('action_filterState',e.target.value)}
+                onInput={e=>cxRun('action_filterState',e.target.value)}
                 placeholder={`filter (string or RegExp, ex. "^some|word$")`}
         />
         <input type="text"
                 value={actions_filter_val}
-                onChange={e=>cxRun('action_filterAction',e.target.value)}
+                onInput={e=>cxRun('action_filterAction',e.target.value)}
                 placeholder={`filter (string or RegExp, ex. "^some|word$")`}
         />
       </div>
       <div className={s.body} ref={box=>this.box=box} onMouseLeave={this.stopMove}>
         <div className={s.state}   ref={r=>this.col1=r}>
-          {state_out && <ObjectInspector data={state_out} name="state" expandLevel={1} nodeRenderer={defaultNodeRenderer} />}
+          {state_out && <ObjectInspector data={state_out}/>}
+          {/*state_out && <ObjectInspector data={state_out} name="state" expandLevel={1} nodeRenderer={defaultNodeRenderer} />}
+          {state_out && <ObjectInspector2 data={state_out}/>*/}
           <br/>
           <br/>
           {state_len ? this.getBytes(state_len) : ""}

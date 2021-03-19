@@ -1,0 +1,86 @@
+.root {
+      color: black;
+    background-color: white;
+    line-height: 14px;
+    cursor: default;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: Menlo, monospace;
+    font-size: 11px;
+}
+.root {
+  margin:3px 0 3px 10px;
+}
+.item {
+  font-size:1em;
+  display: flex;
+}
+.key {
+  font-size:1em;
+  color:#9a3b3a;
+  display:inline-flex;
+  margin:0 5px 0 0;
+  cursor: pointer;
+  color: rgb(136, 19, 145);
+}
+.key:hover {
+  color:#fabbaa;
+  color: rgb(176, 19, 85);
+}
+.keyEnd {
+  font-size:1em;
+  color:#2a3b3a;
+  display:inline-flex;
+  margin:0 5px 0 0;
+  color: rgb(136, 19, 145);
+}
+.keyOpen {
+  font-weight: normal;;
+}
+.keyOpen::before {
+    content:'▶';
+    color: rgb(110, 110, 110);
+    font-size: 9px;
+    margin-right: 3px;
+    user-select: none;
+    transform: rotateZ(90deg);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.keyClose::before {
+    content:'▶';
+    color: rgb(110, 110, 110);
+    font-size: 9px;
+    margin-right: 3px;
+    user-select: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.otype {
+  color:#666;
+  padding: 0 5px;
+  font-size:0.9em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.string {
+  color: rgb(196, 26, 22);
+}
+.boolean {
+  color:#339923;
+}
+.number {
+  color: rgb(28, 0, 207);
+}
+.null {
+  color: rgb(128, 128, 128);
+}

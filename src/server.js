@@ -1,11 +1,10 @@
 let http = require( 'http');
-let https = require( 'https');
 let fs = require( 'fs');
 let express = require('express')
 let WebSocketServer = new require('ws');
 
 
-function runserver(bpath) {
+function runserver(bpath, runDone) {
 
   const SERVER_CERT = process.env.DBG_SERVER_CERT //|| '/etc/letsencrypt/live/fapp.space/fullchain.pem';
   const SERVER_KEY  = process.env.DBG_SERVER_KEY //|| '/etc/letsencrypt/live/fapp.space/privkey.pem';
@@ -40,28 +39,8 @@ function runserver(bpath) {
   },()=>{
     console.log(`The server is running at ${HOST}:${PORT}/`);
     const url = `http://${HOST}:${PORT}`;
-
-    const ChromeLauncher = require('chrome-launcher');
-
-    //const newFlags = ChromeLauncher.defaultFlags().filter(flag => flag !== '--disable-extensions' && flag !== '--mute-audio');
-
-    ChromeLauncher.launch({
-      ignoreDefaultFlags: true,
-      startingUrl: url,
-      chromeFlags: [
-        '--new-window',
-        '--disable-sync',
-        '--no-first-run',
-        '--disable-background-networking',
-        '--disable-translate',
-        '--disable-features=TranslateUI',
-      ],
-    }).then(chrome => {
-      //console.log(`Chrome debugging port running on ${chrome.port}`);
-    });
-
+    runDone(url);
   })
-
 
   //debug proxy
   if(__debug__) {
@@ -74,7 +53,9 @@ function runserver(bpath) {
     });
   }
 
-  app.use('/', express.static(bpath));
+  app.use('/', (req,res)=>{
+    return res.sendFile(__dirname+'/index.html');
+  });
 
   io = new WebSocketServer.Server({ server });
   io = run(io)
@@ -182,4 +163,5 @@ const is_debug = process.env.NODE_ENV === 'development';
 if(is_debug) {
   runserver('build')
 }
-export default runserver;
+module.exports = runserver;
+//export default runserver;

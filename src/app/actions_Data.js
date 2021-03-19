@@ -1,4 +1,10 @@
-import * as R from 'ramda'
+//import * as R from 'ramda'
+
+function R_clone(d) {
+  return d;
+  //return JSON.parse(JSON.stringify(d))
+}
+
 
 export const __module_name = 'actions_Data';
 
@@ -17,6 +23,27 @@ export const bindStateMethods = (stateFn, updateState, emit) => {
   __emit = emit;
 };
 
+let OBJ_OBJ = {
+  un:undefined,
+  nl:null,
+  na:NaN,
+  inf:+Infinity,
+  inf2:-Infinity,
+  some:{
+    file:{
+      hello:'hello'
+    },
+    some2:{
+      arr:[1,2,3,4]
+    }
+  },
+  arra:{
+    arr_ob:{
+      arr2:[{a:1},{a:2}],
+      dd:'fdfdf',
+    }
+  }
+}
 
 export const initState = prop => {
   return {
@@ -106,7 +133,7 @@ function ws_PushAction({proj_name, type, name, args, created}) {
 
   if(_pcurr === proj_name) {
     __setState({
-      actions_src:R.clone(actions_src),
+      actions_src:R_clone(actions_src),
     });
   }
 }
@@ -118,9 +145,9 @@ function ws_PushState({proj_name, type, name, args }) {
 
   if(_pcurr === proj_name) {
     let state_filter_val = __getState().state_filter_val;
-    let state_out = _filterState(state_filter_val,R.clone(state_src));
+    let state_out = _filterState(state_filter_val,R_clone(state_src));
     __setState({
-      state_src:R.clone(state_src),
+      state_src:R_clone(state_src),
       state_out,
     });
   }
@@ -131,8 +158,8 @@ function updateProject() {
   let state_src = _projects[_pcurr].state;
   let actions_src = _projects[_pcurr].actions;
   __setState({
-    state_src:R.clone(state_src),
-    actions_src:R.clone(actions_src),
+    state_src:R_clone(state_src),
+    actions_src:R_clone(actions_src),
     pcurr:_pcurr,
   });
 }
@@ -182,7 +209,7 @@ const  _filterState = (str, obj) => {
 
 export const action_filterState =  ({ state, done, args: state_filter_val   }) => {
   let {state_src} = state;
-  let state_out = _filterState(state_filter_val,R.clone(state_src));
+  let state_out = _filterState(state_filter_val,R_clone(state_src));
   return {
     state_filter_val,
     state_out,

@@ -1,6 +1,10 @@
-import React from 'react';
-import { ObjectInspector, ObjectRootLabel, ObjectLabel} from 'react-inspector';
-import s from './ActionItem.css';
+//import React from 'react';
+import { h, Component } from 'preact';
+
+
+//import { ObjectInspector, ObjectRootLabel, ObjectLabel} from 'react-inspector';
+import  ObjectInspector from './ObjectInspector';
+import s from './ActionItem.module.css';
 
 
 const defaultNodeRenderer = ({ depth, name, data, isNonenumerable, expanded }) =>
@@ -10,7 +14,7 @@ const defaultNodeRenderer = ({ depth, name, data, isNonenumerable, expanded }) =
 
 
 
-class ActionItem extends React.Component {
+class ActionItem extends Component {
   constructor(props) {
     super(props);
 
