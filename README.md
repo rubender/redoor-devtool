@@ -1,7 +1,23 @@
 # redoor-devtool
 redoor debugger
 
-Debugger tool for Redoor librady. See https://github.com/rubender/redoor
+Debugger tool for Redoor library. See https://github.com/rubender/redoor
 
 
-<img src="https://github.com/rubender/redoor-devtool/blob/master/logo/screen.png"/>
+
+
+
+## Install
+
+```yarn add redoor-devtool```
+
+## Usage
+
+### Run dev server
+
+```npx redoor-devtool```
+
+when open browser at http://localhost:8333
+or
+```npx redoor-devtool -o```
+open browser `google-chrome` automatically
